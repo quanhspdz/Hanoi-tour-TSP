@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_choose_start_pos.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.32864583333333336" />
+        <entry key="app/src/main/res/layout/activity_rout_detail.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_select_city.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/dialog_choose_start_pos.xml" value="0.4" />
         <entry key="app/src/main/res/layout/each_row_city.xml" value="0.32864583333333336" />

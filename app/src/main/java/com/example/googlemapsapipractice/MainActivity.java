@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     int startPos;
     Boolean DesIsSet = false;
     Boolean StartIsSet = false;
+    double distance = 0;
+    String path = "";
+    ArrayList<Integer> pathArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +84,81 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         binding.fbuttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (StartIsSet || DesIsSet) resetMarker();
+                if (DesIsSet && StartIsSet) {
+                    startTour();
+                }
             }
         });
+    }
+
+    private void startTour() {
+        int startPos = 0, k = 0;
+        int[] desPlace = new int[places.size()];
+        for (int i = 0; i < places.size(); i++) {
+            if (places.get(i).getStart() || places.get(i).getDes()) {
+                if (places.get(i).getStart()) {
+                    desPlace[k] = desPlace[0];
+                    desPlace[0] = i;
+                } else {
+                    desPlace[k] = i;
+                }
+                k++;
+            }
+        }
+
+        double[][] dist = new double[k + 2][k + 2];
+        for (int i = 0; i < k; i++) {
+            for (int j = 0; j < k; j++) {
+                if (i == j) {
+                    dist[i][j] = 0;
+                } else {
+                    dist[i][j] = distance(places.get(desPlace[i]).getPosition().latitude,
+                                places.get(desPlace[i]).getPosition().longitude,
+                                places.get(desPlace[j]).getPosition().latitude,
+                                places.get(desPlace[j]).getPosition().longitude);
+                    dist[j][i] = dist[i][j];
+                }
+            }
+        }
+
+        TSP.n = k;
+        TSP.dist = dist;
+        TSP.start = 0;
+        TSP.init();
+        distance = TSP.CalculateTSP(1, 0);
+        TSP.showPath_TSP(1, 0);
+        path = TSP.pathString;
+        pathArr = TSP.pathArr;
+
+        path = "";
+        for (int i = 0; i < pathArr.size(); i++) {
+            String tmp = places.get(desPlace[pathArr.get(i)]).getName();
+            path += tmp + "\n";
+        }
+        Intent intent = new Intent(MainActivity.this, RoutDetail.class);
+        intent.putExtra("path", path);
+        startActivity(intent);
+    }
+
+    private double distance(double lat1, double lon1, double lat2, double lon2) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1))
+                * Math.sin(deg2rad(lat2))
+                + Math.cos(deg2rad(lat1))
+                * Math.cos(deg2rad(lat2))
+                * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        return (dist);
+    }
+
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    private double rad2deg(double rad) {
+        return (rad * 180.0 / Math.PI);
     }
 
     @Override

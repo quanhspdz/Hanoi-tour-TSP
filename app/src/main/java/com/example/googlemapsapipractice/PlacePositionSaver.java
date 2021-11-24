@@ -9,7 +9,7 @@ public class PlacePositionSaver {
     public static final LatLng DongXuan = new LatLng(21.037827398640594, 105.8495516146702);
     public static ArrayList<PlaceForm> places = new ArrayList<>();
     public static void addPlace() {
-        places.add(new PlaceForm("Lăng Bắc", "Quảng trường Ba Đình", new LatLng(21.037568724591225, 105.83623230512778)));
+        places.add(new PlaceForm("Lăng Bác", "Quảng trường Ba Đình", new LatLng(21.037568724591225, 105.83623230512778)));
         places.add(new PlaceForm("Hồ Gươm", "", new LatLng(21.028854850370298, 105.8522037649517)));
         places.add(new PlaceForm("Hồ Tây", "", new LatLng(21.054586820871524, 105.82579584525263)));
         places.add(new PlaceForm("Nhà thờ lớn Hà Nội", "", new LatLng(21.028762799739486, 105.84887396705543)));
