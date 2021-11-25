@@ -21,6 +21,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 
@@ -36,12 +37,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     Boolean StartIsSet = false;
     double distance = 0;
     String path = "";
-    ArrayList<Integer> pathArr;
+    ArrayList<Integer> pathArr, arrayPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setTitle("Hanoi tour");
         setContentView(binding.getRoot());
 
         init();
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void startTour() {
-        int startPos = 0, k = 0;
+        int k = 0;
         int[] desPlace = new int[places.size()];
         for (int i = 0; i < places.size(); i++) {
             if (places.get(i).getStart() || places.get(i).getDes()) {
@@ -131,13 +133,27 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         pathArr = TSP.pathArr;
 
         path = "";
+        arrayPath = new ArrayList<>();
         for (int i = 0; i < pathArr.size(); i++) {
+            arrayPath.add(desPlace[pathArr.get(i)]);
             String tmp = places.get(desPlace[pathArr.get(i)]).getName();
             path += tmp + "\n";
         }
-        Intent intent = new Intent(MainActivity.this, RoutDetail.class);
-        intent.putExtra("path", path);
-        startActivity(intent);
+//        Intent intent = new Intent(MainActivity.this, RoutDetail.class);
+//        intent.putExtra("path", path);
+//        startActivity(intent);
+
+        drawPolyline();
+    }
+
+    private void drawPolyline() {
+        for (int i = 0; i < arrayPath.size() - 1; i++) {
+            map.addPolyline(new PolylineOptions()
+                    .add(places.get(arrayPath.get(i)).getPosition()
+                            , places.get(arrayPath.get(i + 1)).getPosition())
+                    .color(Color.YELLOW));
+        }
+        binding.fbuttonSubmit.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
     }
 
     private double distance(double lat1, double lon1, double lat2, double lon2) {
@@ -183,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
             binding.fbuttonStart.setText("Start from: " + places.get(startPos).getName());
-            binding.fbuttonStart.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+            binding.fbuttonStart.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
         }
         if (DesIsSet) {
             int numDes = 0;
@@ -198,11 +214,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(PlacePositionSaver.DongXuan, 14));
             binding.fbuttonDes.setText("To: " + numDes + " place(s) selected!");
-            binding.fbuttonDes.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+            binding.fbuttonDes.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
         }
+        binding.fbuttonSubmit.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
     }
 
     private void init() {
+        binding.fbuttonStart.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+        binding.fbuttonDes.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+        binding.fbuttonSubmit.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+
         PlacePositionSaver.addPlace();
         places = new ArrayList<>();
         places.add(new PlaceForm("Lăng Bắc", "Quảng trường Ba Đình", new LatLng(21.037568724591225, 105.83623230512778)));

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../home/quanhspdz/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_choose_start_pos.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_rout_detail.xml" value="0.32864583333333336" />
@@ -11,6 +12,7 @@
         <entry key="app/src/main/res/layout/each_row_city.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/select_city.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/setlect_city_dialog.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/start_city_each_row.xml" value="0.4" />
       </map>
     </option>
   </component>

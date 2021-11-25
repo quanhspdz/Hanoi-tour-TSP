@@ -21,6 +21,7 @@ public class ChooseStartPos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityChooseStartPosBinding.inflate(getLayoutInflater());
+        setTitle("Choose your starting point!");
         setContentView(binding.getRoot());
 
         places = PlacePositionSaver.places;
@@ -28,7 +29,7 @@ public class ChooseStartPos extends AppCompatActivity {
         for (int i = 0; i < places.size(); i++) {
             placeNames.add(places.get(i).getName());
         }
-        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, placeNames);
+        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.start_city_each_row, placeNames);
         binding.listViewStart.setAdapter(adapter);
 
         binding.listViewStart.setOnItemClickListener(new AdapterView.OnItemClickListener() {
