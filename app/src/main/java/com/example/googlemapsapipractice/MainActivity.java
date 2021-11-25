@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setTitle("Hanoi tour");
         setContentView(binding.getRoot());
 
         init();
@@ -153,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             , places.get(arrayPath.get(i + 1)).getPosition())
                     .color(Color.YELLOW));
         }
-        binding.fbuttonSubmit.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+        binding.fbuttonSubmit.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
     }
 
     private double distance(double lat1, double lon1, double lat2, double lon2) {

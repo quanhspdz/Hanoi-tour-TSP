@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Hanoi tour</string>
+    <string name="app_name">Hanoi Tour</string>
     <string name="maps_api_key">AIzaSyCqn9jD9UPxnVjp3Tw1IevkasiFqEePylk</string>
 </resources>

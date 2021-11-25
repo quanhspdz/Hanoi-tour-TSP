@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../home/quanhspdz/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.32864583333333336" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.3489583333333333" />
         <entry key="app/src/main/res/layout/activity_choose_start_pos.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_rout_detail.xml" value="0.32864583333333336" />
