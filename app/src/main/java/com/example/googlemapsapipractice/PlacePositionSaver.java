@@ -10,6 +10,7 @@ public class PlacePositionSaver {
     public static ArrayList<PlaceForm> places = new ArrayList<>();
     public static void addPlace() {
         places.add(new PlaceForm("Lăng Bác", "Quảng trường Ba Đình", new LatLng(21.037568724591225, 105.83623230512778)));
+        places.add(new PlaceForm("Truờng Đại học Công nghệ", "", new LatLng(21.038902482537342, 105.78296809797327)));
         places.add(new PlaceForm("Hồ Gươm", "", new LatLng(21.028854850370298, 105.8522037649517)));
         places.add(new PlaceForm("Hồ Tây", "", new LatLng(21.054586820871524, 105.82579584525263)));
         places.add(new PlaceForm("Nhà thờ lớn Hà Nội", "", new LatLng(21.028762799739486, 105.84887396705543)));
@@ -23,5 +24,18 @@ public class PlacePositionSaver {
         places.add(new PlaceForm("Chợ Đồng Xuân", "", new LatLng(21.037827398640594, 105.8495516146702)));
         places.add(new PlaceForm("Đền Quán Thánh", "", new LatLng(21.043125346077066, 105.83650261283685)));
         places.add(new PlaceForm("Phố đi bộ Hồ Gươm", "", new LatLng(21.025567489268102, 105.85329782816218)));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
+//        places.add(new PlaceForm("", "", new LatLng()));
     }
 }

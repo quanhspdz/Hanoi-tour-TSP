@@ -26,6 +26,7 @@ public class selectCity extends AppCompatActivity {
         places = PlacePositionSaver.places;
         adapter = new CityAdapter(R.layout.each_row_city, getApplicationContext(), places);
         binding.listView.setAdapter(adapter);
+        binding.fbuttonSubmit.setBackgroundTintList(MainActivity.buttonColor);
 
         binding.fbuttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
